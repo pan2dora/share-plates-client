@@ -5,7 +5,7 @@ function Header() {
     <div className="nav-wrapper">
       <header>
         {/* <!--  Hambuger --> */}
-        <a href="javascript:void(0);" onclick="hamburgerFunction()"><i className="fa-solid fa-bars"></i></a>
+        <a href="#"><i className="fa-solid fa-bars"></i></a>
         {/* <!-----------------------------Logo ------------------------------------------> */}
         <img
           src="public/images/Share.svg"
