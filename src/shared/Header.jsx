@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function Header() {
   return (
     <>
@@ -19,25 +21,35 @@ function Header() {
           <nav className="primary-navigation">
             {/* <!-----------------------------Navbar Links------------------------------------------> */}
             <ul className="nav-links">
+            <li>
+                <Link to="/discover">Discover</Link>
+              </li>
               <li>
-                <a href="#">Login</a>
+                <Link to="/about">About</Link>
+              </li>
+              {/* Add logic for if the user is logged in or not, if logged in display Profile if not display login */}
+              <li>
+                <Link to="/login">Login</Link>
               </li>
               <li class="dropdown">
+                {/* replace profile link with image */}
+                <div></div>
                 <a href="#" class="dropbtn">
-                 Profile
+                  Profile
+                 
+               <i class="fa-solid fa-caret-down"></i>
                 </a>
+                 
                 <div class="dropdown-content">
-                  <a href="#">Profile</a>
-                  <a href="#">Create Recipe</a>
-                  <a href="#">Fav Recipes</a>
+                  <Link to="/admin">Profile</Link>
+                  <Link to="/create">Create</Link>
+                  <Link to="/logout">Logout</Link>
+                  
+                  {/* <a href="#">Fav Recipes</a> */}
+                  
                 </div>
               </li>
-              <li>
-                <a href="discover.html">Discover</a>
-              </li>
-              <li>
-                <a href="about.html">About</a>
-              </li>
+             
             </ul>
           </nav>
 
