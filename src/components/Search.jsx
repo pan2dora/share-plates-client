@@ -69,7 +69,7 @@ function Search({ search, setSearch }) {
         />
 
         <div>
-          <ul className="dropdown-content-2">
+          <ul className="dropdown-content">
             <a>Test Item</a>
             {/*  I have a func that filters my searches, how do I go about rendering that search? */}
             {filteredSearch.map((item)=>(
