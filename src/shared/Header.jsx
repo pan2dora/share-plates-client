@@ -21,7 +21,7 @@ function Header() {
           <nav className="primary-navigation">
             {/* <!-----------------------------Navbar Links------------------------------------------> */}
             <ul className="nav-links">
-            <li>
+              <li>
                 <Link to="/discover">Discover</Link>
               </li>
               <li>
@@ -31,25 +31,22 @@ function Header() {
               <li>
                 <Link to="/login">Login</Link>
               </li>
-              <li class="dropdown">
+              <li className="dropdown">
                 {/* replace profile link with image */}
                 <div></div>
-                <a href="#" class="dropbtn">
+                <a href="#" className="dropbtn">
                   Profile
-                 
-               <i class="fa-solid fa-caret-down"></i>
+                  <i className="fa-solid fa-caret-down"></i>
                 </a>
-                 
-                <div class="dropdown-content">
+
+                <div className="dropdown-content">
                   <Link to="/admin">Profile</Link>
                   <Link to="/create">Create</Link>
                   <Link to="/logout">Logout</Link>
-                  
+
                   {/* <a href="#">Fav Recipes</a> */}
-                  
                 </div>
               </li>
-             
             </ul>
           </nav>
 

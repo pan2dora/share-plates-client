@@ -212,40 +212,43 @@ article img {
   justify-content: center;
   height: 700px;
   align-items: center;
-  border: #333230 solid 5px;
 }
 
-.create-form,
+/* .create-form,
 .login-form,
 .update-form,
 .signup-form {
   padding: 10px;
   width: 400px;
-}
+} */
 
-.flex-input {
+/* .flex-input {
   display: flex;
   flex-direction: row;
   margin-bottom: 10px;
-}
-input[type="text"],
+} */
+/* input[type="text"],
 input[type="password"] {
   padding: 10px;
   font-size: 18px;
+} */
+
+input {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
 }
 
 label {
   flex-basis: 130px;
-  margin-top: 10px;
-  font-size: 20px;
 }
+/* input{
+  
+} */
 
-input[type="button"] {
-  width: 100%;
-  font-size: 20px;
-  padding: 10px;
+button {
   border: none;
-  margin: 20px 0;
+  float: right;
 }
 
 input[type="button"]:hover {
@@ -284,7 +287,7 @@ input[type="button"]:hover {
 /********************************************************** Components *****************************************************/
 
 /* About Page */
-.about-container{
+.about-container {
   padding: 5px;
   margin: 30px;
 }
@@ -296,10 +299,10 @@ input[type="button"]:hover {
   padding: 10%;
 }
 
-.about-blerb{
+.about-blerb {
   font-size: x-large;
   font-weight: bolder;
- text-align: center;
+  text-align: center;
 }
 
 /* Discovery page */
