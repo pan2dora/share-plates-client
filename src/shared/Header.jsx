@@ -60,7 +60,7 @@ function Header() {
 
           <div className="search">
             {/* <input type="text" className="search-bar" placeholder="Search..." /> */}
-            <Search/>
+            <Search search={search} setSearch={setSearch} />
           {/* <!-- Search Icon --> */}
           {/* {/* <i className="fa-solid fa-magnifying-glass"></i> */}
           </div>

@@ -1,4 +1,5 @@
 function Search({ search, setSearch }) {
+  console.log("This is search:", search);
   return (
     <div className="search">
       <input
