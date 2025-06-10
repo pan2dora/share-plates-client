@@ -1,6 +1,12 @@
-import { Link } from "react-router-dom";
+import { Link, Routes } from "react-router-dom";
+import Search from "../components/Search";
+
+import { useState } from "react";
 
 function Header() {
+  //Create state to pass as prop to search component using destructuring
+  const [search, setSearch] = useState("");
+
   return (
     <>
       {/* <!-- Header & Primary Nav container --> */}
@@ -53,11 +59,12 @@ function Header() {
           {/* <!-----------------------------Search ------------------------------------------> */}
 
           <div className="search">
-            <input type="text" className="search-bar" placeholder="Search..." />
-            {/* <!-- Search Icon --> */}
-            <i className="fa-solid fa-magnifying-glass"></i>
+            {/* <input type="text" className="search-bar" placeholder="Search..." /> */}
+            <Search/>
+          {/* <!-- Search Icon --> */}
+          {/* {/* <i className="fa-solid fa-magnifying-glass"></i> */}
           </div>
-
+         
           {/* <!-- Profile Icon - This will eventually become a drop down--> */}
           <div>
             <a href="admin.html">

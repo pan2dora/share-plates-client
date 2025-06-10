@@ -1,4 +1,5 @@
 import { Routes, Route } from "react-router-dom";
+import { useState } from "react";
 import "./App.css";
 import About from "./components/About.jsx";
 import Admin from "./components/Admin.jsx";
@@ -14,48 +15,34 @@ import Footer from "./shared/Footer.jsx";
 import Header from "./shared/Header.jsx";
 
 function App() {
-const tasks = [
-  {
-    id:1, 
-    title: "Test"
-  },
-  {
-    id:2, 
-    title: "Test2"
-  },
-  {
-    id:3, 
-    title: "Test3"
-  },
-]
-
-
+  const tasks = [
+    {
+      id: 1,
+      title: "Test",
+    },
+    {
+      id: 2,
+      title: "Test2",
+    },
+    {
+      id: 3,
+      title: "Test3",
+    },
+  ];
 
   return (
     <>
       <Header />
       <Routes>
-        <Route path="/" element={<Home/>}/>
-        <Route path="/about" element={ <About />}/>
-        <Route path="/admin" element={ <Admin />}/>
-        <Route path="/create" element={ <Create />}/>
-        <Route path="/discover" element={  <Discover />}/>
-        <Route path="/login" element={<Login />}/>
-        <Route path="/recipe" element={<Recipe />}/>
-        <Route path="/search" element={ <Search />}/>
-        <Route path="/signup" element={ 
-      <Signup />}/>
-        <Route path="/update" element={<Update tasks = {tasks} />}/>
-       
-     
-     
-     
-    
-      
-      
-      
-    
-      
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/admin" element={<Admin />} />
+        <Route path="/create" element={<Create />} />
+        <Route path="/discover" element={<Discover />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/recipe" element={<Recipe />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/update" element={<Update tasks={tasks} />} />
       </Routes>
       <Footer />
     </>
