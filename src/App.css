@@ -82,7 +82,7 @@ header img {
 
 /********************************************************** Nav drop down bar  *****************************************************/
 
-.dropdown-content {
+.dropdown-content{
   display: none;
   position: absolute;
   background-color: #f9f9f9;
@@ -91,7 +91,16 @@ header img {
   z-index: 1;
 }
 
-.dropdown-content a {
+.dropdown-content-2{
+  
+   position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.dropdown-content a, .dropdown-content-2 a{
   color: black;
   padding: 12px 16px;
   text-decoration: none;
@@ -99,11 +108,11 @@ header img {
   text-align: left;
 }
 
-.dropdown-content a:hover {
+.dropdown-content a:hover .dropdown-content-2 a:hover  {
   background-color: #f1f1f1;
 }
 
-.dropdown:hover .dropdown-content {
+.dropdown:hover .dropdown-content .dropdown-content-2 {
   display: block;
 }
 

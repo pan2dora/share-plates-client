@@ -3,7 +3,7 @@ const recipes = [
     id: 1,
     title: "Shrimp Fried Rice",
     image: "public/images/placeholder.png",
-    blerb: "Blerb goes here",
+    blerb: "Delcious",
   },
   {
     id: 2,
