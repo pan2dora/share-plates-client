@@ -39,7 +39,7 @@ function Header() {
               </li>
               <li className="dropdown">
                 {/* replace profile link with image */}
-                <div></div>
+                {/* <div></div> */}
                 <a href="#" className="dropbtn">
                   Profile
                   <i className="fa-solid fa-caret-down"></i>
@@ -61,13 +61,15 @@ function Header() {
           <div className="search">
             {/* <input type="text" className="search-bar" placeholder="Search..." /> */}
             <Search search={search} setSearch={setSearch} />
+            
+             
           {/* <!-- Search Icon --> */}
           {/* {/* <i className="fa-solid fa-magnifying-glass"></i> */}
           </div>
          
           {/* <!-- Profile Icon - This will eventually become a drop down--> */}
           <div>
-            <a href="admin.html">
+            <a href="/admin">
               <i className="fa-solid fa-circle-user"></i>
             </a>
           </div>
