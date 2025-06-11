@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import recipesData from "../data/recipes";
+import mockdata from "../data/mockdata";
 
 function Discover() {
   const [recipes, setRecipes] = useState([]);
 
   useEffect(() => {
-    setRecipes(recipesData);
+    setRecipes(mockdata);
 
     console.log("Use effect works");
   }, []);
@@ -13,9 +13,10 @@ function Discover() {
   return (
     <>
       {/* FIRST CARD */}
+      <div className="card-container">
       {recipes.map((recipe)=>(
 
-      <div className="card-container">
+      <div >
         {/* Still deciding if I want entire card to be link */}
         <a href="update.html">
           <article className="card">
@@ -27,6 +28,7 @@ function Discover() {
           </article>
         </a>
       </div>))}
+      </div>
     </>
   );
 }

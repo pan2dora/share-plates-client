@@ -197,6 +197,7 @@ a:active {
 /* --------------------------------------CARDS -------------------------------------- */
 .card-container {
   display: flex;
+  flex-direction: row;
   padding: 30px;
   gap: 50px;
   flex-wrap: wrap;
@@ -386,6 +387,10 @@ input[type="button"]:hover {
   .fa-circle-user {
     font-size: 40px;
   }
+ 
+
+
+ 
 }
 
 /* Code snippets */
