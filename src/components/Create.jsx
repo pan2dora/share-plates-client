@@ -17,6 +17,12 @@ function Create() {
     e.preventDefault(console.log("Submitted"));
     const body = {
       recipe: e.target.recipe.value,
+        image: e.target.image.value,
+    about: e.target.about.value,
+    item: e.target.item.value,
+    itemPrice: e.target.item.value,
+    instructions: e.target.instructions.value,
+    diet: e.target.diet.value
     };
   };
 
