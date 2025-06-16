@@ -1,6 +1,6 @@
 import { Link, Routes } from "react-router-dom";
 import Search from "../components/Search";
-
+import Logo from "../assets/images/Share.svg";
 import { useState } from "react";
 
 function Header() {
@@ -18,7 +18,7 @@ function Header() {
           </a>
           {/* <!-----------------------------Logo ------------------------------------------> */}
           <img
-            src="public/images/Share.svg"
+            src={Logo}
             alt="Animation of plate with share plate in the middle"
             className="nav-logo"
           />
@@ -61,12 +61,11 @@ function Header() {
           <div className="search">
             {/* <input type="text" className="search-bar" placeholder="Search..." /> */}
             <Search search={search} setSearch={setSearch} />
-            
-             
-          {/* <!-- Search Icon --> */}
-          {/* {/* <i className="fa-solid fa-magnifying-glass"></i> */}
+
+            {/* <!-- Search Icon --> */}
+            {/* {/* <i className="fa-solid fa-magnifying-glass"></i> */}
           </div>
-         
+
           {/* <!-- Profile Icon - This will eventually become a drop down--> */}
           <div>
             <a href="/admin">

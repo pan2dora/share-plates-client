@@ -3,7 +3,7 @@ import mockdata from "../data/mockdata";
 
 function Discover() {
   const [recipes, setRecipes] = useState([]);
-
+//Random assortment of recipes, later will be randomize based on users filters
   useEffect(() => {
     setRecipes(mockdata);
 
