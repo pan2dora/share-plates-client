@@ -16,7 +16,7 @@ function Home() {
       {/* FIRST CARD */}
       <div className="card-container">
       {recipes.map((recipe) => (
-        <div  key={recipe.id}>
+        <div  key={recipe._id}>
           {/* Still deciding if I want entire card to be link */}
           <a href="#">
             <article className="card">

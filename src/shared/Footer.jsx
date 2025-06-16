@@ -1,3 +1,4 @@
+import Logo from "../assets/images/Share.svg";
 function Footer() {
     return (
         <>
@@ -6,7 +7,7 @@ function Footer() {
           {/*--------------------------- Logo -------------------------------*/}
           <img
             className="footer-logo"
-            src="public/images/share-tra.svg"
+            src={Logo}
             alt="Animation of a plate with Share Plate scripted within"
           />
           {/*------------------  SOCIAL LINKS ----------------------------------*/}
