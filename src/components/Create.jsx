@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function Create() {
   // manages form inputs
@@ -10,8 +10,6 @@ function Create() {
     price: "",
     instructions: [],
   });
-  // Handle submit
-  // This state sets the id for items since everyone must be unique
 
   // does the same thing for instructions
   const [countInstructions, setCountInstructions] = useState(0);
@@ -24,10 +22,10 @@ function Create() {
   const [newInstruction, setNewInstruction] = useState("");
   const [instructions, setInstructions] = useState([]);
 
-  //handles the changes for each of the inputs
-  const handlenewRecipes = (e) => {
+  const handleNewRecipes = (e) => {
     e.preventDefault();
     const { name, value } = e.target;
+
     console.log("Value in handle Change:", value, name);
     setNewRecipe((prevRecipeData) => ({ ...prevRecipeData, [name]: value }));
   };
@@ -35,16 +33,41 @@ function Create() {
   //
   const handleSubmit = (e) => {
     e.preventDefault(console.log("Submitted"));
+  //Created a loop that loops through my array of items and instructions because I couldn't figure out how to push my data to arrays in the backend
+    let newItem = "";
+    for (let i = 0; i < items.length; i++) {
+      console.log("Loop:", i);
+      newItem += items[i].title;
+      if(i < items.length-1){
+        newItem +=","
+      }
+    }
 
+     let newInstruction = "";
+    for (let i = 0; i < instructions.length; i++) {
+      console.log("Loop:", i);
+      newInstruction += items[i].title;
+      if(i < items.length-1){
+        newInstruction +=",";
+      }
+    }
+
+    const recipeToSubmit = {
+      ...newRecipe,
+      items: newItem,
+      instructions: newInstruction,
+    };
+
+    console.log("Recipe to submit:", recipeToSubmit);
     const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
-    const endpoint = "/api/recipes/new/create";
+    const endpoint = "/api/recipes/create/new";
 
     fetch(`${API_BASE_URL}${endpoint}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(newRecipe),
+      body: JSON.stringify(recipeToSubmit),
     })
       .then((response) => response.json())
       .then((result) => console.log(result))
@@ -53,20 +76,13 @@ function Create() {
       });
   };
 
-  const recipeToSubmit = {
-    ...newRecipe,
-    items: items,
-    instructions: instructions,
-  };
-console.log("Recipe to submit:", recipeToSubmit)
-  console.log("form data:", newRecipe);
-
   //Handle ingredients list
   const handleListSubmit = (e) => {
     e.preventDefault();
     setItems((prevItems) => {
-      return [...prevItems, { title: newItem }];
+      return [...prevItems, { id: prevItems.length + 1, title: newItem }];
     });
+    setNewItem("");
   };
 
   //For later refractoring with filtering
@@ -83,8 +99,9 @@ console.log("Recipe to submit:", recipeToSubmit)
         { id: countInstructions + 1, title: newInstruction },
       ];
     });
+    setNewInstruction("");
   };
-
+  console.log("form data:", newRecipe);
   // Create Image preview
 
   console.log("Items:", items);
@@ -111,7 +128,7 @@ console.log("Recipe to submit:", recipeToSubmit)
               id="recipe"
               value={newRecipe.recipe}
               placeholder="What's your recipes name?"
-              onChange={handlenewRecipes}
+              onChange={handleNewRecipes}
             />
           </div>
           {/* IMAGE UPLOAD */}
@@ -119,15 +136,16 @@ console.log("Recipe to submit:", recipeToSubmit)
           <div className="flex-input">
             <label htmlFor="image">Image</label>
             <input
-              type="file"
+              type="text"
               name="image"
               id="image"
               value={newRecipe.image}
-              onChange={handlenewRecipes}
+              onChange={handleNewRecipes}
+              placeholder="paste an image url"
             />
           </div>
           <div>
-            <img src="{image}" alt="preview image" />
+            <img src={newRecipe.image} alt="preview image" />
           </div>
           {/* BLERB */}
           <div className="flex-input">
@@ -137,7 +155,7 @@ console.log("Recipe to submit:", recipeToSubmit)
               name="about"
               id="about"
               value={newRecipe.about}
-              onChange={handlenewRecipes}
+              onChange={handleNewRecipes}
               placeholder="Tell us a story about your recipe"
             />
           </div>
@@ -154,7 +172,11 @@ console.log("Recipe to submit:", recipeToSubmit)
               onChange={(e) => setNewItem(e.target.value)}
             />
 
-            <button onClick={handleListSubmit} className="items-btn">
+            <button
+              type="button"
+              onClick={handleListSubmit}
+              className="items-btn"
+            >
               +
             </button>
             {/* Figure out ui for  */}
@@ -173,7 +195,7 @@ console.log("Recipe to submit:", recipeToSubmit)
               id="price"
               value={newRecipe.price}
               placeholder="$"
-              onChange={handlenewRecipes}
+              onChange={handleNewRecipes}
             />
           </div>
           {/* INSYRUCTIONS */}
@@ -187,7 +209,11 @@ console.log("Recipe to submit:", recipeToSubmit)
               onChange={(e) => setNewInstruction(e.target.value)}
             />
 
-            <button onClick={handleInstructionsubmit} className="items-btn">
+            <button
+              type="button"
+              onClick={handleInstructionsubmit}
+              className="items-btn"
+            >
               +
             </button>
 
@@ -197,19 +223,10 @@ console.log("Recipe to submit:", recipeToSubmit)
                 return <li key={ingredient.id}>{ingredient.title}</li>;
               })}
             </ul>
-            {/* <button className="btn-delete">-</button> */}
           </div>
 
-          {/* FILTERS */}
-          {/* <div className="flex-input">
-            <label htmlFor="diet">Tags</label>
-            <input type="text" name="diet" id="diet" onChange={handlenewRecipes} />
-          </div> */}
-          {/* Eventually this will be where people can input various dietary tags */}
           {/* SUBMIT BUTTON */}
-          <button onClick={handleSubmit} type="submit">
-            Create Recipe
-          </button>
+          <button type="submit">Create Recipe</button>
         </form>
       </div>
     </>
