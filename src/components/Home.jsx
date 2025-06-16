@@ -14,8 +14,9 @@ function Home() {
   return (
     <>
       {/* FIRST CARD */}
+      <div className="card-container">
       {recipes.map((recipe) => (
-        <div className="card-container" key={recipe.id}>
+        <div  key={recipe.id}>
           {/* Still deciding if I want entire card to be link */}
           <a href="#">
             <article className="card">
@@ -27,7 +28,7 @@ function Home() {
             </article>
           </a>
         </div>
-      ))}
+      ))}</div>
     </>
   );
 }

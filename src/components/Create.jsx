@@ -1,33 +1,18 @@
 import { useState } from "react";
 
 function Create() {
-  // handles the form data
-  const [formData, setFormData] = useState({
+  // manages form inputs
+  const [newRecipe, setNewRecipe] = useState({
     recipe: "",
     image: "",
     about: "",
-    item: [],
-    itemPrice: "",
+    items: [],
+    price: "",
     instructions: [],
-    diet: "",
   });
   // Handle submit
-
-  const handleSubmit = (e) => {
-    e.preventDefault(console.log("Submitted"));
-    const body = {
-      recipe: e.target.recipe.value,
-        image: e.target.image.value,
-    about: e.target.about.value,
-    item: e.target.item.value,
-    itemPrice: e.target.item.value,
-    instructions: e.target.instructions.value,
-    diet: e.target.diet.value
-    };
-  };
-
   // This state sets the id for items since everyone must be unique
-  const [count, setCount] = useState(0);
+
   // does the same thing for instructions
   const [countInstructions, setCountInstructions] = useState(0);
   // Working on logic for this image state that will eventually render image previews
@@ -39,17 +24,55 @@ function Create() {
   const [newInstruction, setNewInstruction] = useState("");
   const [instructions, setInstructions] = useState([]);
 
+  //handles the changes for each of the inputs
+  const handlenewRecipes = (e) => {
+    e.preventDefault();
+    const { name, value } = e.target;
+    console.log("Value in handle Change:", value, name);
+    setNewRecipe((prevRecipeData) => ({ ...prevRecipeData, [name]: value }));
+  };
+
+  //
+  const handleSubmit = (e) => {
+    e.preventDefault(console.log("Submitted"));
+
+    const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+    const endpoint = "/api/recipes/new/create";
+
+    fetch(`${API_BASE_URL}${endpoint}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newRecipe),
+    })
+      .then((response) => response.json())
+      .then((result) => console.log(result))
+      .catch((error) => {
+        return console.log(error);
+      });
+  };
+
+  const recipeToSubmit = {
+    ...newRecipe,
+    items: items,
+    instructions: instructions,
+  };
+console.log("Recipe to submit:", recipeToSubmit)
+  console.log("form data:", newRecipe);
+
+  //Handle ingredients list
   const handleListSubmit = (e) => {
     e.preventDefault();
-    setCount((prevCount) => prevCount + 1);
     setItems((prevItems) => {
-      return [...prevItems, { id: count + 1, title: newItem }];
+      return [...prevItems, { title: newItem }];
     });
   };
 
-  const handleListRemove = (id) => {
-    setItems((prevItems) => prevItems.filter((item) => item.id !== id));
-  };
+  //For later refractoring with filtering
+  // const handleListRemove = (id) => {
+  //   setItems((prevItems) => prevItems.filter((item) => item !== item));
+  // };
 
   const handleInstructionsubmit = (e) => {
     e.preventDefault();
@@ -62,22 +85,11 @@ function Create() {
     });
   };
 
-  const handleChange = (e) => {
-    e.preventDefault();
-    const value = e.target.value;
-    const name = e.target.name;
-    console.log("Value in handle Change:", value , name);
-    setFormData((prevFormData) => ({ ...prevFormData, [name]: value }));
-  };
   // Create Image preview
 
   console.log("Items:", items);
   console.log("Instructions:", instructions);
-  console.log("Form Data:", formData);
-
-
-
-
+  console.log("Form Data:", newRecipe);
 
   return (
     <>
@@ -97,8 +109,9 @@ function Create() {
               type="text"
               name="recipe"
               id="recipe"
+              value={newRecipe.recipe}
               placeholder="What's your recipes name?"
-              onChange={handleChange}
+              onChange={handlenewRecipes}
             />
           </div>
           {/* IMAGE UPLOAD */}
@@ -109,7 +122,8 @@ function Create() {
               type="file"
               name="image"
               id="image"
-              onChange={handleChange}
+              value={newRecipe.image}
+              onChange={handlenewRecipes}
             />
           </div>
           <div>
@@ -118,11 +132,12 @@ function Create() {
           {/* BLERB */}
           <div className="flex-input">
             <label htmlFor="about">Description</label>
-            <input
+            <textarea
               type="text"
               name="about"
               id="about"
-              onChange={handleChange}
+              value={newRecipe.about}
+              onChange={handlenewRecipes}
               placeholder="Tell us a story about your recipe"
             />
           </div>
@@ -135,6 +150,7 @@ function Create() {
               type="text"
               name="items"
               id="items"
+              placeholder="Add an ingredient"
               onChange={(e) => setNewItem(e.target.value)}
             />
 
@@ -144,18 +160,7 @@ function Create() {
             {/* Figure out ui for  */}
             <ul className="shopping-list">
               {items.map((item) => {
-                return (
-                  <li key={item.id}>
-                    {item.title}
-                    <button
-                      key={item.title}
-                      onClick={handleListRemove}
-                      className="btn-delete"
-                    >
-                      x
-                    </button>{" "}
-                  </li>
-                );
+                return <li key={item.id}>{item.title}</li>;
               })}
             </ul>
           </div>
@@ -166,8 +171,9 @@ function Create() {
               type="number"
               name="price"
               id="price"
+              value={newRecipe.price}
               placeholder="$"
-              onChange={handleChange}
+              onChange={handlenewRecipes}
             />
           </div>
           {/* INSYRUCTIONS */}
@@ -184,23 +190,26 @@ function Create() {
             <button onClick={handleInstructionsubmit} className="items-btn">
               +
             </button>
+
             {/* Figure out ui for  */}
             <ul className="instructions">
               {instructions.map((ingredient) => {
                 return <li key={ingredient.id}>{ingredient.title}</li>;
               })}
             </ul>
-            <button className="btn-delete">-</button>
+            {/* <button className="btn-delete">-</button> */}
           </div>
 
           {/* FILTERS */}
-          <div className="flex-input">
+          {/* <div className="flex-input">
             <label htmlFor="diet">Tags</label>
-            <input type="text" name="diet" id="diet" onChange={handleChange} />
-          </div>
+            <input type="text" name="diet" id="diet" onChange={handlenewRecipes} />
+          </div> */}
           {/* Eventually this will be where people can input various dietary tags */}
           {/* SUBMIT BUTTON */}
-          <button type="submit">Create</button>
+          <button onClick={handleSubmit} type="submit">
+            Create Recipe
+          </button>
         </form>
       </div>
     </>
