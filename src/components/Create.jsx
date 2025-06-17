@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
+
 
 function Create() {
   // manages form inputs
@@ -10,6 +11,11 @@ function Create() {
     price: "",
     instructions: [],
   });
+
+  // file upload: resource Cosden Solutions on youtube - File upload
+ 
+  //when this is called it checks for the file and access the first index and sets it as files state
+ 
 
   // does the same thing for instructions
   const [countInstructions, setCountInstructions] = useState(0);
@@ -33,22 +39,22 @@ function Create() {
   //
   const handleSubmit = (e) => {
     e.preventDefault(console.log("Submitted"));
-  //Created a loop that loops through my array of items and instructions because I couldn't figure out how to push my data to arrays in the backend
+    //Created a loop that loops through my array of items and instructions because I couldn't figure out how to push my data to arrays in the backend
     let newItem = "";
     for (let i = 0; i < items.length; i++) {
       console.log("Loop:", i);
       newItem += items[i].title;
-      if(i < items.length-1){
-        newItem +=","
+      if (i < items.length - 1) {
+        newItem += ",";
       }
     }
 
-     let newInstruction = "";
+    let newInstruction = "";
     for (let i = 0; i < instructions.length; i++) {
       console.log("Loop:", i);
-      newInstruction += items[i].title;
-      if(i < items.length-1){
-        newInstruction +=",";
+      newInstruction += instructions[i].title;
+      if (i < instructions.length - 1) {
+        newInstruction += ",";
       }
     }
 
@@ -136,16 +142,16 @@ function Create() {
           <div className="flex-input">
             <label htmlFor="image">Image</label>
             <input
-              type="text"
+              type="file"
               name="image"
               id="image"
-              value={newRecipe.image}
+             
               onChange={handleNewRecipes}
               placeholder="paste an image url"
             />
           </div>
           <div>
-            <img src={newRecipe.image} alt="preview image" />
+            <img src="src/assets/images/placeholder.png" alt="preview image" />
           </div>
           {/* BLERB */}
           <div className="flex-input">
