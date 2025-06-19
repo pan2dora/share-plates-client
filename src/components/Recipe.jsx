@@ -24,17 +24,30 @@ function Recipe() {
   console.log("Recipe data:", recipe);
   console.log("recipe id", recipe[1]);
 
+
+
   return (
     <div>
       <div>
-        <img src="public/images/placeholder.png" alt="" />
+        <img src={recipe.image} alt="" />
       </div>
       <h1>{recipe.recipe}</h1>
       <img src={recipe.image} alt="picture offood" />
       <p>{recipe.about}</p>
       <section>
         <ul>
-          <li>{recipe.items}</li>
+          {/* source stackoverflow for the question mark: https://stackoverflow.com/questions/69080597/%C3%97-typeerror-cannot-read-properties-of-undefined-reading-map  */}
+          {recipe.items?.map((item, index) => (
+            <li key={index}>{item}</li>
+          ))}
+        </ul>
+      </section>
+       <section>
+        <ul>
+          {/* source stackoverflow for the question mark: https://stackoverflow.com/questions/69080597/%C3%97-typeerror-cannot-read-properties-of-undefined-reading-map  */}
+          {recipe.instructions?.map((instruction, index) => (
+            <li key={index}>{instruction}</li>
+          ))}
         </ul>
       </section>
     </div>
