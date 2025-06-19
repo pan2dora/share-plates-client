@@ -53,9 +53,7 @@ function Search({ search, setSearch }) {
 
   const filteredSearch = filterItems(mockAPI, search);
 
-  // console.log("Func after search:", filterItems(mockAPI, search));
-  // console.log("search after func", search);
-  console.log("Filtered items", filteredSearch);
+ 
 
   return (
     <div className="search">

@@ -40,7 +40,7 @@ function App() {
         <Route path="/create" element={<Create />} />
         <Route path="/discover" element={<Discover />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/recipe" element={<Recipe />} />
+        <Route path="/recipe/:_id" element={<Recipe />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/update" element={<Update tasks={tasks} />} />
       </Routes>

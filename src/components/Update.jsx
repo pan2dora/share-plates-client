@@ -1,17 +1,36 @@
-function Update(props) {
+import { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+
+function Update() {
   // function handleText(e){
   // console.log(e.target.value)
   // }
+  // const navigate = useNavigate();
+  const [recipes, setRecipes] = useState({});
+  const url = import.meta.env.VITE_API_BASE_URL;
+  const endpoint = "/api/recipes";
+  const { _id } = useParams();
+  console.log(useParams());
+
+  // console.log("ids:", params.recipes)
+  useEffect(() => {
+    fetch(`${url}${endpoint}`, { method: "GET" })
+      .then((response) => response.json())
+      .then((result) => {
+        console.log("Update Sucess:", result.success.message);
+      })
+      .catch((error) => console.log("Error:", error.message));
+  });
 
   return (
     <>
       {/* Test */}
-      {props.tasks.map((task) => (
+      {/* {props.tasks.map((task) => (
         <ul key={task.id}>
           <li>Task {task.title}</li>
           <li>Status:{task.title}</li>
         </ul>
-      ))}
+      ))} */}
 
       <div>Update</div>
 

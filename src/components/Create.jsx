@@ -1,6 +1,5 @@
 import { useState } from "react";
 
-
 function Create() {
   // manages form inputs
   const [newRecipe, setNewRecipe] = useState({
@@ -13,9 +12,8 @@ function Create() {
   });
 
   // file upload: resource Cosden Solutions on youtube - File upload
- 
+
   //when this is called it checks for the file and access the first index and sets it as files state
- 
 
   // does the same thing for instructions
   const [countInstructions, setCountInstructions] = useState(0);
@@ -40,22 +38,18 @@ function Create() {
   const handleSubmit = (e) => {
     e.preventDefault(console.log("Submitted"));
     //Created a loop that loops through my array of items and instructions because I couldn't figure out how to push my data to arrays in the backend
-    let newItem = "";
+    let newItem = [];
     for (let i = 0; i < items.length; i++) {
       console.log("Loop:", i);
-      newItem += items[i].title;
-      if (i < items.length - 1) {
-        newItem += ",";
-      }
+      newItem.push(items[i].title);
+      console.log("Does New instructions work:", newItem);
     }
 
-    let newInstruction = "";
+    let newInstruction = [];
     for (let i = 0; i < instructions.length; i++) {
       console.log("Loop:", i);
-      newInstruction += instructions[i].title;
-      if (i < instructions.length - 1) {
-        newInstruction += ",";
-      }
+      newInstruction.push(instructions[i].title);
+      console.log("Does New instructions work:", newInstruction);
     }
 
     const recipeToSubmit = {
@@ -145,7 +139,6 @@ function Create() {
               type="file"
               name="image"
               id="image"
-             
               onChange={handleNewRecipes}
               placeholder="paste an image url"
             />
