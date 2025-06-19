@@ -11,14 +11,10 @@ function Create() {
     instructions: [],
   });
 
-  // file upload: resource Cosden Solutions on youtube - File upload
+  // file upload: resource Cosden Solutions on youtube - File upload and https://www.geeksforgeeks.org/reactjs/how-to-upload-image-and-preview-it-using-reactjs/
+  const [file, setFile] = useState();
 
-  //when this is called it checks for the file and access the first index and sets it as files state
-
-  // does the same thing for instructions
   const [countInstructions, setCountInstructions] = useState(0);
-  // Working on logic for this image state that will eventually render image previews
-  // const [image, setImage] = useState("")
   // These two states handle the ingredient list
   const [newItem, setNewItem] = useState("");
   const [items, setItems] = useState([]);
@@ -29,6 +25,7 @@ function Create() {
   const handleNewRecipes = (e) => {
     e.preventDefault();
     const { name, value } = e.target;
+    setFile(URL.createObjectURL(e.target.files[0]));
 
     console.log("Value in handle Change:", value, name);
     setNewRecipe((prevRecipeData) => ({ ...prevRecipeData, [name]: value }));
@@ -140,11 +137,19 @@ function Create() {
               name="image"
               id="image"
               onChange={handleNewRecipes}
-              placeholder="paste an image url"
             />
           </div>
           <div>
-            <img src="src/assets/images/placeholder.png" alt="preview image" />
+            <h2>Upload a image</h2>
+            {/* source : lectures & https://legacy.reactjs.org/docs/conditional-rendering.html */}
+            {!file ? (
+              <img
+                src="src/assets/images/placeholder.png"
+                alt="preview image"
+              />
+            ) : (
+              file && <img src={file} alt="Uploaded preview" />
+            )}
           </div>
           {/* BLERB */}
           <div className="flex-input">
