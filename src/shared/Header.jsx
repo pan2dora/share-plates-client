@@ -1,11 +1,24 @@
 import { Link, Routes } from "react-router-dom";
 import Search from "../components/Search";
 import Logo from "../assets/images/Share.svg";
+import Create from "../components/Create";
 import { useState } from "react";
+import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
 
 function Header() {
   //Create state to pass as prop to search component using destructuring
   const [search, setSearch] = useState("");
+  // source: https://react-bootstrap.netlify.app/docs/components/modal
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  const handleModal = (e) => {
+    e.preventDefault();
+    handleShow();
+  };
 
   return (
     <>
@@ -47,13 +60,17 @@ function Header() {
 
                 <div className="dropdown-content">
                   <Link to="/admin">Profile</Link>
-                  <Link to="/create">Create</Link>
+
+                  <Link to="#" onClick={handleModal}>
+                    Create
+                  </Link>
                   <Link to="/logout">Logout</Link>
 
                   {/* <a href="#">Fav Recipes</a> */}
                 </div>
               </li>
             </ul>
+            <Create show={show} handleClose={handleClose} />
           </nav>
 
           {/* <!-----------------------------Search ------------------------------------------> */}

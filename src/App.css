@@ -274,6 +274,12 @@ input[type="button"]:hover {
   text-align: right;
 }
 
+
+/* Images */
+.preview-image{
+ border-radius: 10px;
+  width: 100px;
+}
 /* .login-form, {
    display: flex;
    flex-direction: column;

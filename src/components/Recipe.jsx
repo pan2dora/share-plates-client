@@ -5,10 +5,11 @@ function Recipe() {
   const { _id } = useParams();
   console.log("Use params:", useParams());
   const [recipe, setRecipe] = useState([]);
-
+ const [file, setFile] = useState();
+ 
   useEffect(() => {
     const url = import.meta.env.VITE_API_BASE_URL;
-
+    
     fetch(`${url}/api/recipes/${_id}`, {
       method: "GET",
       headers: { "Content-type": "application/json" },
@@ -29,7 +30,14 @@ function Recipe() {
   return (
     <div>
       <div>
-        <img src={recipe.image} alt="" />
+            {!file ? (
+              <img
+                src="src/assets/images/placeholder.png"
+                alt="preview image"
+              />
+            ) : (
+              file && <img src={(e)=>setFile(e.target.files[0])} alt="Uploaded preview" />
+            )}
       </div>
       <h1>{recipe.recipe}</h1>
       <img src={recipe.image} alt="picture offood" />

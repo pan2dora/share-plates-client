@@ -10,6 +10,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@cloudinary/react": "^1.14.3",
+    "@cloudinary/url-gen": "^1.21.0",
+    "@uploadcare/react-uploader": "^1.8.1",
     "bootstrap": "^5.3.6",
     "react": "^19.0.0",
     "react-bootstrap": "^2.10.10",
