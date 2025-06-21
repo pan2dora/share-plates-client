@@ -3,8 +3,7 @@ import Search from "../components/Search";
 import Logo from "../assets/images/Share.svg";
 import Create from "../components/Create";
 import { useState } from "react";
-import Button from "react-bootstrap/Button";
-import Modal from "react-bootstrap/Modal";
+
 
 function Header() {
   //Create state to pass as prop to search component using destructuring
