@@ -3,7 +3,12 @@ import Search from "../components/Search";
 import Logo from "../assets/images/Share.svg";
 import Create from "../components/Create";
 import { useState } from "react";
-
+import Button from 'react-bootstrap/Button';
+import Container from 'react-bootstrap/Container';
+import Form from 'react-bootstrap/Form';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import NavDropdown from 'react-bootstrap/NavDropdown';
 
 function Header() {
   //Create state to pass as prop to search component using destructuring
@@ -22,8 +27,10 @@ function Header() {
   return (
     <>
       {/* <!-- Header & Primary Nav container --> */}
-      <div className="navbar-container">
-        <header>
+      {/* <div > className="navbar-container" */}
+      <Navbar  className="navbar-container">
+        
+       
           {/* <!--  Hambuger --> */}
           <a href="#">
             <i className="fa-solid fa-bars"></i>
@@ -88,8 +95,8 @@ function Header() {
               <i className="fa-solid fa-circle-user"></i>
             </a>
           </div>
-        </header>
-      </div>
+       
+      </Navbar>
     </>
   );
 }

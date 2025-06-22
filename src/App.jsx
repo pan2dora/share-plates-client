@@ -10,42 +10,42 @@ import Discover from "./components/Discover.jsx";
 import Home from "./components/Home.jsx";
 import Login from "./components/Login.jsx";
 import Recipe from "./components/Recipe.jsx";
-import Search from "./components/Search.jsx";
 import Signup from "./components/Signup.jsx";
 import Update from "./components/Update.jsx";
 import Footer from "./shared/Footer.jsx";
 import Header from "./shared/Header.jsx";
 
+import { useState } from "react";
+
 function App() {
-  const tasks = [
-    {
-      id: 1,
-      title: "Test",
-    },
-    {
-      id: 2,
-      title: "Test2",
-    },
-    {
-      id: 3,
-      title: "Test3",
-    },
-  ];
   // source : https://react-bootstrap.netlify.app/docs/components/modal
+  const [user, setUser] = useState(localStorage.getItem("user"));
 
   return (
     <>
-      <Header />
+      <header>
+        <Header user={user} setUser={setUser} />
+      </header>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/admin" element={<Admin />} />
         <Route path="/create" element={<Create />} />
         <Route path="/discover" element={<Discover />} />
-        <Route path="/login" element={<Login />} />
+        <Route
+          path="/login"
+          element={<Login />}
+          user={user}
+          setUser={setUser}
+        />
         <Route path="/recipe/:_id" element={<Recipe />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/update" element={<Update tasks={tasks} />} />
+        <Route
+          path="/signup"
+          element={<Signup />}
+          user={user}
+          setUser={setUser}
+        />
+        <Route path="/update" element={<Update />} />
       </Routes>
       <Footer />
     </>
