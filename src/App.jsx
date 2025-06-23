@@ -45,7 +45,7 @@ function App() {
           user={user}
           setUser={setUser}
         />
-        <Route path="/update" element={<Update />} />
+        <Route path="/update/:_id" element={<Update />} />
       </Routes>
       <Footer />
     </>

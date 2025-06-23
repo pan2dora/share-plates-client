@@ -7,10 +7,10 @@ function Search({ search, setSearch }) {
   const [recipes, setRecipes] = useState([]);
 
   useEffect(() => {
-    setRecipes(mockAPI);
+    setRecipes(recipes);
 
     console.log("Use effect works");
-  }, []);
+  }, [recipes]);
 
   //source : https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter
   //For the time being I will use an api for extra recipes

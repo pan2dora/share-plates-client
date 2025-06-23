@@ -217,6 +217,8 @@ function Create({ show, handleClose }) {
                   </Col>
                 </Row>
               </Container>
+             </Form.Group>
+             <Form.Group>
               <Form.Label htmlFor="ingredients">Instructions</Form.Label>
               <Container>
                 <Row>
@@ -264,7 +266,7 @@ function Create({ show, handleClose }) {
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" type="submit" onClick={handleSubmit}>
+          <Button variant="secondary" type="submit" >
             Create
           </Button>
         </Modal.Footer>
