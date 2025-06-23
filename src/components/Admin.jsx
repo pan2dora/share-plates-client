@@ -13,6 +13,7 @@ function Admin() {
 
   const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
   const endpoint = "/api/recipes";
+  console.log(recipes)
   //Random assortment of recipes, later will be randomize based on users filters
   useEffect(() => {
     fetch(`${API_BASE_URL}${endpoint}`, {
@@ -39,6 +40,18 @@ function Admin() {
     setRecipeCard(recipeObject);
     handleShow();
   };
+console.log(recipeCard)
+
+  const handleDelete = (recipe) =>{
+    console.log("Deleting", recipe)
+      fetch(`${API_BASE_URL}${endpoint}/delete/${recipe._id}`, { method: "DELETE" })
+      .then((response) => response.json())
+      .then((result) => console.log("Success:",result.success.message))
+      .catch(console.log("error"));
+
+    
+
+  }
 
   return (
     <>
@@ -87,7 +100,7 @@ function Admin() {
                 </Card.Body>
                 <Button onClick={() => handleModal(recipe)}>Edit</Button>
 
-                <Button>Delete</Button>
+                <Button onClick={()=>handleDelete(recipe)}>Delete</Button>
               </Card>
             </Col>
           </Row>
