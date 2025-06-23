@@ -59,8 +59,6 @@ function Admin() {
       {/* <Profile show={show} handleClose={handleClose} /> */}
       <h2>Your recipes</h2>
       <div className="card-wrapper">
-        
-
         {recipes.map((recipe) => (
           <Row key={recipe._id}>
             <Col>

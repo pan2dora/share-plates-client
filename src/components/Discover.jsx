@@ -22,7 +22,7 @@ function Discover() {
       })
       .catch(console.log("error:"));
   }, [API_BASE_URL]);
-  console.log("API URL", );
+  console.log("API URL");
   const endpoint2 = "/api/recipe/";
   const url = `${API_BASE_URL}${endpoint2}`;
   console.log("url", `${url}`);
@@ -31,47 +31,28 @@ function Discover() {
 
   return (
     <>
-      {/* <Row xs={1} md={2} className="g-4"  >
-      {Array.from({ length: 4 }).map((_, idx) => (
-        <Col  key={idx}   className="card-container">
-           { recipes.map((recipe) => ( <Card key={recipe._id} className="card"  >
-              <Card.Img variant="top" src={recipe.image} />
-              <Card.Body>
-                <Card.Title className="card-content">{recipe.recipe}</Card.Title>
-                <Card.Text className="card-description" >
-                  {recipe.about}
-                </Card.Text>
-              </Card.Body>
-            </Card> ))}
-        </Col>
-      ))}
-    </Row>
-  ); */}
-
       {/* FIRST CARD */}
 
-     <div className="card-wrapper">
-
+      <div className="card-wrapper">
         {recipes.map((recipe) => (
           <Row key={recipe._id}>
-          <Col  >
-       <Card col-lg-2 className="card">  
-            
-            <Card.Img
-              className="card-image"
-              src={recipe.image}
-              alt="Image of food"
-            />
+            <Col>
+              <Card col-lg-2 className="card">
+                <Card.Img
+                  className="card-image"
+                  src={recipe.image}
+                  alt="Image of food"
+                />
 
-            <Card.Body className="card-content">
-              <Link to={`/recipe/${recipe._id}`}>
-                <Card.Title>{recipe.recipe}</Card.Title>
-              </Link>
-              <Card.Text>{recipe.about}</Card.Text>
-            </Card.Body>
-            </Card>
-          </Col></Row>
-
+                <Card.Body className="card-content">
+                  <Link to={`/recipe/${recipe._id}`}>
+                    <Card.Title>{recipe.recipe}</Card.Title>
+                  </Link>
+                  <Card.Text>{recipe.about}</Card.Text>
+                </Card.Body>
+              </Card>
+            </Col>
+          </Row>
         ))}
       </div>
     </>

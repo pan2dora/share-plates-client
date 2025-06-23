@@ -7,7 +7,6 @@ import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 
-
 function Create({ show, handleClose }) {
   // manages form inputs
   const [newRecipe, setNewRecipe] = useState({
@@ -217,8 +216,8 @@ function Create({ show, handleClose }) {
                   </Col>
                 </Row>
               </Container>
-             </Form.Group>
-             <Form.Group>
+            </Form.Group>
+            <Form.Group>
               <Form.Label htmlFor="ingredients">Instructions</Form.Label>
               <Container>
                 <Row>
@@ -266,7 +265,7 @@ function Create({ show, handleClose }) {
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" type="submit" >
+          <Button variant="secondary" type="submit">
             Create
           </Button>
         </Modal.Footer>

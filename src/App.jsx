@@ -7,7 +7,6 @@ import About from "./components/About.jsx";
 import Admin from "./components/Admin.jsx";
 import Create from "./components/Create.jsx";
 import Discover from "./components/Discover.jsx";
-import Home from "./components/Home.jsx";
 import Login from "./components/Login.jsx";
 import Recipe from "./components/Recipe.jsx";
 import Signup from "./components/Signup.jsx";
@@ -27,11 +26,12 @@ function App() {
         <Header user={user} setUser={setUser} />
       </header>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Discover />} />
+        <Route path="/discover" element={<Discover />} />
         <Route path="/about" element={<About />} />
         <Route path="/admin" element={<Admin />} />
         <Route path="/create" element={<Create />} />
-        <Route path="/discover" element={<Discover />} />
+
         <Route
           path="/login"
           element={<Login />}

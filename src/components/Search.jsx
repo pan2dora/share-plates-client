@@ -19,7 +19,7 @@ function Search({ search, setSearch }) {
         setRecipes(result.data.recipes);
       })
       .catch(console.log("error:"));
-  }, [ API_BASE_URL]);
+  }, [API_BASE_URL]);
 
   //basic filtering func
   function filterItems(arr, search) {
@@ -47,7 +47,7 @@ function Search({ search, setSearch }) {
             {/*  I have a func that filters my searches, how do I go about rendering that search? */}
             {/* if item == price then populate the items in that range */}
             {filteredSearch.map((item) => (
-              <a  href={`/recipe/${item._id}`}key={item._id} >
+              <a href={`/recipe/${item._id}`} key={item._id}>
                 {item.recipe}
               </a>
             ))}

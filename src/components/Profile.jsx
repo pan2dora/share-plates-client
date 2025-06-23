@@ -1,10 +1,6 @@
 import Button from "react-bootstrap/Button";
-import { Form } from "react-bootstrap";
 import Modal from "react-bootstrap/Modal";
 
-import Container from "react-bootstrap/Container";
-import Col from "react-bootstrap/Col";
-import Row from "react-bootstrap/Row";
 
 function Profile({ show, handleClose }) {
   return (
