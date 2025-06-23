@@ -60,6 +60,7 @@ function Update({ show, handleClose, recipes, recipeId }) {
       [name]: value,
     }));
   };
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -85,16 +86,17 @@ function Update({ show, handleClose, recipes, recipeId }) {
 
   return (
     <>
-      <Modal show={show} onHide={handleClose} size="lg">
+      <Modal show={show} onHide={handleClose} size="lg" key="recipe-modal">
         <Modal.Header closeButton>
           <Modal.Title>
             {recipes ? `Update ${recipes.recipe}` : "Update"}{" "}
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          {recipes ? (
+          
             <Form className="create-form" onSubmit={handleSubmit}>
               {/* RECIPE NAME */}
+            {recipes ? (  <div>
               <Container>
                 <Form.Group>
                   <Form.Label htmlFor="recipe">Recipe Title</Form.Label>
@@ -160,74 +162,11 @@ function Update({ show, handleClose, recipes, recipeId }) {
                 </Container>{" "}
               </Form.Group>
               <Button type="submit">Update</Button>
-              {/* Items */}
-              {/* <Form.Group>
-              <Form.Label htmlFor="ingredients">Ingredients</Form.Label>
-              <Container>
-                <Row>
-                  <Col xs={12} md={8}>
-                    <Form.Control
-                      // value={recipes.items}
-                      type="text"
-                      name="items"
-                      id="items"
-                      placeholder="Add an ingredient"
-                      // onChange={(e) => setNewItem(e.target.value)}
-                    />
-                  </Col>
-                  <Col xs={6} md={4}>
-                    <Button
-                      type="button"
-                      // onClick={handleListSubmit}
-                      className="items-btn"
-                    >
-                      +
-                    </Button>
-                    <ul className="shopping-list">
-                      {recipes.items.map((item) => {
-                        return <li key={item.id}>{item.title}</li>;
-                      })}
-                    </ul>
-                  </Col>
-                </Row>
-              </Container>
-             </Form.Group> */}
-              {/* <div className="flex-input">
-                <label htmlFor="recipe">Recipe</label>
-                <input type="text" defaultValue={recipes.recipe} />
-              </div> */}
-              {/* IMAGE UPLOAD */}
-              {/* <div className="flex-input">
-                <label htmlFor="image">Image</label>
-                <input type="text" />
-              </div> */}
-              {/* BLERB */}
-              {/* <div className="flex-input">
-                <label htmlFor="about">About Recipe</label>
-                <input type="text" />
-              </div> */}
-              {/* SHOPPING LIST */}
-              {/* <div className="flex-input">
-                <label htmlFor="items">Shopping List</label>
-                <input type="text" />
-              </div>
-              <div className="flex-input">
-                <label htmlFor="items-price">Price</label>
-                <input type="number" />
-              </div> */}
-              {/* INSYRUCTIONS */}
-              {/* <div className="flex-input">
-                <label htmlFor="">Instructions</label>
-                <input type="text" />
-              </div> */}
-              {/* FILTERS */}
-              {/* Eventually this will be where people can input various dietary tags */}
-              {/* SUBMIT BUTTON */}
-              {/* <input type="button" defaultValue="Update" /> */}
-            </Form>
-          ) : (
+            </div> ) : (
             <p>Loading...</p>
           )}
+            </Form>
+         
         </Modal.Body>
       </Modal>
     </>

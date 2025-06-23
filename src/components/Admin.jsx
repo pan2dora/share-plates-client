@@ -5,6 +5,7 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import { Link, useNavigate } from "react-router-dom";
 import Update from "./Update";
+import Profile from "./Profile";
 
 function Admin() {
   const [recipes, setRecipes] = useState([]);
@@ -13,7 +14,7 @@ function Admin() {
 
   const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
   const endpoint = "/api/recipes";
-  console.log(recipes)
+  console.log(recipes);
   //Random assortment of recipes, later will be randomize based on users filters
   useEffect(() => {
     fetch(`${API_BASE_URL}${endpoint}`, {
@@ -40,52 +41,30 @@ function Admin() {
     setRecipeCard(recipeObject);
     handleShow();
   };
-console.log(recipeCard)
+  console.log(recipeCard);
 
-  const handleDelete = (recipe) =>{
-    console.log("Deleting", recipe)
-      fetch(`${API_BASE_URL}${endpoint}/delete/${recipe._id}`, { method: "DELETE" })
+  const handleDelete = (recipe) => {
+    console.log("Deleting", recipe);
+    fetch(`${API_BASE_URL}${endpoint}/delete/${recipe._id}`, {
+      method: "DELETE",
+    })
       .then((response) => response.json())
-      .then((result) => console.log("Success:",result.success.message))
+      .then((result) => console.log("Success:", result.success.message))
       .catch(console.log("error"));
-
-    
-
-  }
+  };
 
   return (
     <>
-      <form className="signup-form">
-        {/* USERNAME */}
-        <div className="flex-input">
-          <label htmlFor="username">Username</label>
-          <input type="text" />
-        </div>
-        {/* EMAIL */}
-        <div className="flex-input">
-          <label htmlFor="email">Email</label>
-          <input type="text" />
-        </div>
-        {/* PASSWORD */}
-        <div className="flex-input">
-          <label htmlFor="password">Password</label>
-          <input type="password" />
-        </div>
-        {/* IMAGE UPLOAD */}
-        <div className="flex-input">
-          <label htmlFor="image">Profile Photo</label>
-          <input type="file" />
-        </div>
-        {/* SIGNUP BUTTON */}
-        <input type="submit" defaultValue="Save" />
-      </form>
+      {/* <Button onClick={() => handleModal()}>Edit Profile</Button> */}
+      {/* <Profile show={show} handleClose={handleClose} /> */}
+      <h2>Your recipes</h2>
       <div className="card-wrapper">
-        <h2>Your recipes</h2>
+        
 
         {recipes.map((recipe) => (
           <Row key={recipe._id}>
             <Col>
-              <Card  className="card">
+              <Card className="card">
                 <Card.Img
                   className="card-image"
                   src={recipe.image}
@@ -100,7 +79,7 @@ console.log(recipeCard)
                 </Card.Body>
                 <Button onClick={() => handleModal(recipe)}>Edit</Button>
 
-                <Button onClick={()=>handleDelete(recipe)}>Delete</Button>
+                <Button onClick={() => handleDelete(recipe)}>Delete</Button>
               </Card>
             </Col>
           </Row>

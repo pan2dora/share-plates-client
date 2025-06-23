@@ -8,6 +8,7 @@ function Home() {
   //Url vars
 
   useEffect(() => {
+
     const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
     const endpoint = "/api/recipes";
 
@@ -27,7 +28,7 @@ function Home() {
     <>
       {/* FIRST CARD */}
       <div className="card-container">
-        {recipes.map((recipe) => (
+        { recipes?   recipes.map((recipe) => (
           <div key={recipe._id}>
             <a href="#">
               <article className="card">
@@ -39,7 +40,7 @@ function Home() {
               </article>
             </a>
           </div>
-        ))}
+        )): <p>"Loading Data"</p>}
       </div>
     </>
   );

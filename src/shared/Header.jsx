@@ -10,6 +10,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 
+
 function Header() {
   //Create state to pass as prop to search component using destructuring
   const [search, setSearch] = useState("");
@@ -30,12 +31,13 @@ function Header() {
       {/* <div > className="navbar-container" */}
       <Navbar  className="navbar-container">
         
-       
+       <Container >
           {/* <!--  Hambuger --> */}
           <a href="#">
             <i className="fa-solid fa-bars"></i>
           </a>
           {/* <!-----------------------------Logo ------------------------------------------> */}
+         
           <img
             src={Logo}
             alt="Animation of plate with share plate in the middle"
@@ -53,9 +55,9 @@ function Header() {
                 <Link to="/about">About</Link>
               </li>
               {/* Add logic for if the user is logged in or not, if logged in display Profile if not display login */}
-              <li>
+              {/* <li>
                 <Link to="/login">Login</Link>
-              </li>
+              </li> */}
               <li className="dropdown">
                 {/* replace profile link with image */}
                 {/* <div></div> */}
@@ -70,7 +72,7 @@ function Header() {
                   <Link to="#" onClick={handleModal}>
                     Create
                   </Link>
-                  <Link to="/logout">Logout</Link>
+                  {/* <Link to="/logout">Logout</Link> */}
 
                   {/* <a href="#">Fav Recipes</a> */}
                 </div>
@@ -85,8 +87,7 @@ function Header() {
             {/* <input type="text" className="search-bar" placeholder="Search..." /> */}
             <Search search={search} setSearch={setSearch} />
 
-            {/* <!-- Search Icon --> */}
-            {/* {/* <i className="fa-solid fa-magnifying-glass"></i> */}
+           
           </div>
 
           {/* <!-- Profile Icon - This will eventually become a drop down--> */}
@@ -95,7 +96,7 @@ function Header() {
               <i className="fa-solid fa-circle-user"></i>
             </a>
           </div>
-       
+       </Container>
       </Navbar>
     </>
   );
