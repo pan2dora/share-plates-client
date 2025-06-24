@@ -112,7 +112,7 @@ function Create({ show, handleClose }) {
 
   return (
     <>
-      <Modal show={show} onHide={handleClose} size="lg">
+      <Modal className="modal" show={show} onHide={handleClose} size="lg">
         <Modal.Header closeButton>
           <Modal.Title>Add your Recipe</Modal.Title>
         </Modal.Header>
@@ -147,20 +147,12 @@ function Create({ show, handleClose }) {
                     />
                   </Col>
                   <Col xs={3} md={2}>
-                    {!newRecipe.image ? (
+                    {newRecipe.image && (
                       <img
-                        className="preview-image"
                         src={newRecipe.image}
-                        alt="preview image"
+                        alt="Uploaded preview"
+                        className="preview-image"
                       />
-                    ) : (
-                      newRecipe.image && (
-                        <img
-                          src={newRecipe.image}
-                          alt="Uploaded preview"
-                          className="preview-image"
-                        />
-                      )
                     )}
                   </Col>
                 </Row>
@@ -262,13 +254,13 @@ function Create({ show, handleClose }) {
                 </Row>
               </Container>
             </Form.Group>
+            <Button variant="secondary" type="submit">
+              Create
+            </Button>
           </Form>
         </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" type="submit">
-            Create
-          </Button>
-        </Modal.Footer>
+
+        <Modal.Footer></Modal.Footer>
       </Modal>
     </>
   );

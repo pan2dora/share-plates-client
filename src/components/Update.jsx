@@ -8,7 +8,7 @@ import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 
-function Update({ show, handleClose, recipes, recipeId }) {
+function Update({ show, handleClose, recipes }) {
   const { _id } = useParams();
   console.log("Use params:", useParams());
   const [recipe, setRecipe] = useState(null);
@@ -60,7 +60,6 @@ function Update({ show, handleClose, recipes, recipeId }) {
       [name]: value,
     }));
   };
-  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -93,80 +92,80 @@ function Update({ show, handleClose, recipes, recipeId }) {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          
-            <Form className="create-form" onSubmit={handleSubmit}>
-              {/* RECIPE NAME */}
-            {recipes ? (  <div>
-              <Container>
+          <Form className="create-form" onSubmit={handleSubmit}>
+            {/* RECIPE NAME */}
+            {recipes ? (
+              <div>
+                <Container>
+                  <Form.Group>
+                    <Form.Label htmlFor="recipe">Recipe Title</Form.Label>
+                    <Form.Control
+                      type="text"
+                      name="recipe"
+                      id="recipe"
+                      placeholder={recipes.recipe}
+                      onChange={handleUpdate}
+                      autoFocus
+                    />
+                  </Form.Group>
+                </Container>
+                {/* Image and preview */}
                 <Form.Group>
-                  <Form.Label htmlFor="recipe">Recipe Title</Form.Label>
-                  <Form.Control
-                    type="text"
-                    name="recipe"
-                    id="recipe"
-                    placeholder={recipes.recipe}
-                    onChange={handleUpdate}
-                    autoFocus
-                  />
-                </Form.Group>
-              </Container>
-              {/* Image and preview */}
-              <Form.Group>
-                <Form.Label htmlFor="image">Upload Image</Form.Label>
-                <Container>
-                  <Row>
-                    <Col xs={12} md={8}>
-                      <Form.Control
-                        type="text"
-                        name="image"
-                        id="image"
-                        onChange={handleUpdate}
-                      />
-                    </Col>
-                    <Col xs={3} md={2}>
-                      {!recipes.image ? (
-                        <img
-                          className="preview-image"
-                          src={recipes.image}
-                          alt="preview image"
+                  <Form.Label htmlFor="image">Upload Image</Form.Label>
+                  <Container>
+                    <Row>
+                      <Col xs={12} md={8}>
+                        <Form.Control
+                          type="text"
+                          name="image"
+                          id="image"
+                          onChange={handleUpdate}
                         />
-                      ) : (
-                        recipes.image && (
+                      </Col>
+                      <Col xs={3} md={2}>
+                        {!recipes.image ? (
                           <img
-                            src={recipes.image}
-                            alt="Uploaded preview"
                             className="preview-image"
+                            src={recipes.image}
+                            alt="preview image"
                           />
-                        )
-                      )}
-                    </Col>
-                  </Row>
-                </Container>{" "}
-              </Form.Group>
-              {/* About */}
-              <Form.Group>
-                <Form.Label htmlFor="about">About</Form.Label>
-                <Container>
-                  <Row>
-                    <Col xs={12} md={8}>
-                      <Form.Control
-                        as="textarea"
-                        type="textarea"
-                        name="about"
-                        id="about"
-                        onChange={handleUpdate}
-                        placeholder={recipes.about}
-                      />
-                    </Col>
-                  </Row>
-                </Container>{" "}
-              </Form.Group>
-              <Button type="submit">Update</Button>
-            </div> ) : (
-            <p>Loading...</p>
-          )}
-            </Form>
-         
+                        ) : (
+                          recipes.image && (
+                            <img
+                              src={recipes.image}
+                              alt="Uploaded preview"
+                              className="preview-image"
+                            />
+                          )
+                        )}
+                      </Col>
+                    </Row>
+                  </Container>{" "}
+                </Form.Group>
+                {/* About */}
+                <Form.Group>
+                  <Form.Label htmlFor="about">About</Form.Label>
+                  <Container>
+                    <Row>
+                      <Col xs={12} md={8}>
+                        <Form.Control
+                          as="textarea"
+                          type="textarea"
+                          name="about"
+                          id="about"
+                          onChange={handleUpdate}
+                          placeholder={recipes.about}
+                        />
+                      </Col>
+                    </Row>
+                  </Container>{" "}
+                </Form.Group>
+                <Button type="submit">Update</Button>
+              </div>
+            ) : (
+              <p>Loading...</p>
+            )}
+          </Form>
         </Modal.Body>
       </Modal>
     </>

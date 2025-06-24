@@ -33,9 +33,9 @@ function Header() {
         
        <Container >
           {/* <!--  Hambuger --> */}
-          <a href="#">
+          {/* <a href="#">
             <i className="fa-solid fa-bars"></i>
-          </a>
+          </a> */}
           {/* <!-----------------------------Logo ------------------------------------------> */}
          
           <img
@@ -67,7 +67,7 @@ function Header() {
                 </a>
 
                 <div className="dropdown-content">
-                  <Link to="/admin">Profile</Link>
+                  <Link to="/admin">Account</Link>
 
                   <Link to="#" onClick={handleModal}>
                     Create
@@ -92,9 +92,9 @@ function Header() {
 
           {/* <!-- Profile Icon - This will eventually become a drop down--> */}
           <div>
-            <a href="/admin">
+            {/* <a href="/admin">
               <i className="fa-solid fa-circle-user"></i>
-            </a>
+            </a> */}
           </div>
        </Container>
       </Navbar>

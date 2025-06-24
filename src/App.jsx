@@ -22,9 +22,11 @@ function App() {
 
   return (
     <>
+    <div className="route-container">
       <header>
         <Header user={user} setUser={setUser} />
       </header>
+      <main className="main-body">
       <Routes>
         <Route path="/" element={<Discover />} />
         <Route path="/discover" element={<Discover />} />
@@ -47,7 +49,9 @@ function App() {
         />
         <Route path="/update/:_id" element={<Update />} />
       </Routes>
+      </main>
       <Footer />
+      </div>
     </>
   );
 }

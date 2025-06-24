@@ -22,18 +22,31 @@
   --background: #f3ede0;
 }
 
-body{
+html,
+body,
+#root {
+  height: 100%;
   margin: 0;
   padding: 0;
+}
+body {
   overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+.route-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+.main-body {
+  flex: 1;
 }
 .nav-header {
-  
-
   /* border: dotted green 5px; 
   /* height: 4rem; */
   align-items: center;
-  
 }
 header img {
   margin-top: 3%;
@@ -41,10 +54,10 @@ header img {
 .navbar-container {
   display: flex;
   gap: 50px;
-  
   position: sticky;
   top: 0;
   width: 100vw;
+  align-items: center;
   /* Change color later */
   background-color: white;
   margin: 0;
@@ -56,20 +69,20 @@ header img {
 }
 /* Header */
 
-
+.modal {
+  z-index: 9999;
+}
 
 /* Start of Navbar */
-
-
 
 .fa-magnifying-glass {
   color: black;
 }
 
 /* Navigation Styling */
-.nav-links{
-    display: none;
-  }
+.nav-links {
+  display: none;
+}
 
 .primary-navigation ul {
   display: flex;
@@ -83,7 +96,7 @@ header img {
   color: brown;
   font-weight: bold;
   text-decoration: none;
-} 
+}
 
 /********************************************************** Nav drop down bar  *****************************************************/
 
@@ -95,19 +108,11 @@ header img {
   z-index: 10000;
 }
 
-/* .dropdown-content-2 {
-  position: relative;
-  background-color: #f9f9f9;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  z-index: 1001;
-} */
-
 .dropdown-content a {
   color: black;
   padding: 5px 10px;
   text-decoration: none;
   display: block;
- 
 }
 
 .dropdown-content a:hover {
@@ -115,7 +120,7 @@ header img {
 }
 
 .dropdown:hover .dropdown-content {
-  display: block
+  display: block;
 }
 
 /********************************************************** End of Nav drop down bar  *****************************************************/
@@ -124,57 +129,61 @@ img {
   width: 250px;
 }
 /********************************************************** Footer Styling *****************************************************/
-.footer-wrapper {
-  position: relative;
-  bottom: 0;
-}
+
 footer {
-  /* margin: 0;
-    padding: 0; */
-  /* position: absolute;
-    bottom: 0; */
   width: 100%;
-  /* height: 10rem; */
   box-shadow: 15px 0px 30px 0px var(--lightgold);
-  /* border: solid yellow; */
   display: flex;
   justify-content: space-between;
-  margin-top: auto;
+  align-items: flex-start;
+  padding: 0;
+  margin: 0;
+  height: 100px;
 }
 
 footer img {
-  height: 100%;
+  height: 100px;
+  width: auto;
 }
 
-.social-links {
-  align-self: center;
-
-  /* border: solid yellow; */
+.social-links h2,
+.footer-links h2 {
+  font-size: large;
+  font-weight: lighter;
 }
 
+.social-links,
 .footer-links {
   align-self: center;
-  /* border: solid yellow; */
   text-align: center;
 }
 
+/* .footer-links ul, .social-links ul {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  gap: 10px
+} */
 .footer-links ul {
-  width: 100%;
-  display: inline;
-  padding: 0%;
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  gap: 10px;
 }
 
-/* .footer-links {
-    border: #333230 solid 3px;
-   
-    display: inline-block;
-    text-align: left;
-   
-  } */
-
-/* .footer-links, .social-links{
-  
-  } */
+.social-links ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  gap: 15px;
+}
 
 .footer-links a:link,
 .social-links a:link {
@@ -200,7 +209,7 @@ a:active {
 .card-wrapper {
   display: flex;
   gap: 25px;
-flex-wrap: wrap;
+  flex-wrap: wrap;
   padding: 50px;
 }
 
@@ -215,6 +224,8 @@ flex-wrap: wrap;
   height: 150px;
 }
 
+
+
 /* Forms: Login Page, Create Page , Signup Page , Update Page   */
 
 .form-wrapper {
@@ -223,25 +234,6 @@ flex-wrap: wrap;
   height: 700px;
   align-items: center;
 }
-
-/* .create-form,
-.login-form,
-.update-form,
-.signup-form {
-  padding: 10px;
-  width: 400px;
-} */
-
-/* .flex-input {
-  display: flex;
-  flex-direction: row;
-  margin-bottom: 10px;
-} */
-/* input[type="text"],
-input[type="password"] {
-  padding: 10px;
-  font-size: 18px;
-} */
 
 input {
   width: 100%;
@@ -279,25 +271,6 @@ input[type="button"]:hover {
   border-radius: 10px;
   width: 100px;
 }
-/* .login-form, {
-   display: flex;
-   flex-direction: column;
-  justify-content: center;
-  
-  } */
-
-/* input[type="text"],
-  select,
-  textarea {
-    width: 50%;
-    padding: 5px;
-    border-radius: 4px;
-  }
-  
-  label {
-    padding: 12px 12px 12px 0;
-    display: inline-block;
-  } */
 
 /********************************************************** Components *****************************************************/
 /* Search */
@@ -321,10 +294,29 @@ input[type="button"]:hover {
   text-align: center;
 }
 
+/* Recipe page */
+.recipe-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 80px;
+}
 /* Discovery page */
 
 /* Create Page */
 
+/* Admin */
+.admin-btn-container{
+ display: flex;
+ justify-content: center;
+ gap: 50px;
+}
+
+.admin-btn{
+  background-color: var(--oyster);
+  border: none;
+  padding: 8px 16px;
+}
 /* -------------------------------------- Media Quires -------------------------------------- */
 
 /* Mobile 320-480*/
@@ -332,20 +324,28 @@ input[type="button"]:hover {
 @media screen and (max-width: 480px) {
   header {
     justify-content: center;
-    gap: 40%;
-    flex: 1;
+    font-size: small;
   }
-
+.navbar-container{
+  padding: 0;
+}
   footer {
     justify-content: center;
+    display: flex;
+    flex-direction: column;
+    font-size: small;
   }
   header img,
-  .search-bar,
-  .primary-navigation,
-  .footer-links,
-  .footer-logo,
-  .product-of {
+  .footer-logo {
     display: none;
+  }
+    .search-bar {
+    height: 30px;
+    padding-left: 5px 10px;
+  }
+  .search-bar input {
+    height: 100%;
+    font-size: 20px;
   }
 
   .fa-circle-user {
@@ -358,13 +358,21 @@ input[type="button"]:hover {
   /* nav & footer */
   .fa-bars,
   .nav-logo,
-  .search-bar,
   .footer-logo {
     display: none;
   }
 
+  .search-bar {
+    height: 30px;
+    padding-left: 5px 10px;
+  }
+  .search-bar input {
+    height: 100%;
+    font-size: 20px;
+  }
   footer {
     flex-direction: column;
+    height: 100%;
   }
 
   .fa-circle-user {
@@ -374,6 +382,9 @@ input[type="button"]:hover {
   header {
     justify-content: center;
     gap: 20%;
+  }
+  .card-wrapper {
+    justify-content: center;
   }
 }
 
@@ -387,10 +398,17 @@ input[type="button"]:hover {
 
   header {
     gap: 5%;
-    flex: 1;
   }
   .fa-circle-user {
     font-size: 40px;
   }
-}
+    .search-bar {
+    height: 30px;
+    padding-left: 5px 10px;
+  }
+  .search-bar input {
+    height: 100%;
+    font-size: 20px;
+  }
 
+}

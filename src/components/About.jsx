@@ -5,10 +5,10 @@ function About() {
       <>
       <div className="about-container">
       <div className="about-img">
-        <img src="public/images/recipe-app.svg" alt="" />
+        <img src="src/assets/images/transparentlogo.svg" alt="" />
       </div>
       <p className="about-blerb">
-       Inspired by their own upbringing, Share Plates is an application created by....(continue later) Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi consequuntur similique repellendus molestiae debitis fugiat commodi. Laboriosam numquam dolores ratione et odio ipsum, fuga voluptatum aspernatur omnis non sed nobis. Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique cumque eligendi atque laborum aliquid voluptatum dolorem fugit nobis error, accusantium placeat consectetur aperiam saepe deserunt sequi distinctio, labore facere aut!
+        Inspired by rising grocery prices and food insecurity, Share Plates is a passion project that aims to connect communities all over to share tips, meals and reduce waste.Founded by Pandora, a former foster youth who understands what it's like to be without food, Share Plates is built on compassion, community, and making meals accessible for all.
       </p>
       </div>
     </>

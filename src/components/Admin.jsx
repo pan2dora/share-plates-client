@@ -3,9 +3,8 @@ import { Button } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Update from "./Update";
-import Profile from "./Profile";
 
 function Admin() {
   const [recipes, setRecipes] = useState([]);
@@ -57,7 +56,7 @@ function Admin() {
     <>
       {/* <Button onClick={() => handleModal()}>Edit Profile</Button> */}
       {/* <Profile show={show} handleClose={handleClose} /> */}
-      <h2>Your recipes</h2>
+     
       <div className="card-wrapper">
         {recipes.map((recipe) => (
           <Row key={recipe._id}>
@@ -75,9 +74,10 @@ function Admin() {
                   </Link>
                   <Card.Text>{recipe.about}</Card.Text>
                 </Card.Body>
-                <Button onClick={() => handleModal(recipe)}>Edit</Button>
+                <div className="admin-btn-container">
+                <Button  className="admin-btn" onClick={() => handleModal(recipe)}>Edit</Button>
 
-                <Button onClick={() => handleDelete(recipe)}>Delete</Button>
+                <Button className="admin-btn" onClick={() => handleDelete(recipe)}>Delete</Button></div>
               </Card>
             </Col>
           </Row>
